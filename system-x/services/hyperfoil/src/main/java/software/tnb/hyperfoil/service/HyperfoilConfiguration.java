@@ -20,6 +20,8 @@ public class HyperfoilConfiguration extends Configuration {
     public static final String RETRY_NUMBER_OF_RETRIES = "hyperfoil.http.retry.policy.retries";
     public static final String RETRY_POLICY_ENABLED = "hyperfoil.http.retry.policy.enabled";
 
+    //public static final String
+
     public static boolean keepRunning() {
         return getBoolean(KEEP_RUNNING, false);
     }
