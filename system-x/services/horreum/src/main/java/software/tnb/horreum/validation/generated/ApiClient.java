@@ -13,6 +13,9 @@
 
 package software.tnb.horreum.validation.generated;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import software.tnb.horreum.validation.generated.auth.ApiKeyAuth;
 import software.tnb.horreum.validation.generated.auth.Authentication;
 import software.tnb.horreum.validation.generated.auth.HttpBasicAuth;
@@ -81,6 +84,8 @@ import okio.Okio;
  * <p>ApiClient class.</p>
  */
 public class ApiClient {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ApiClient.class);
 
     private String basePath = "http://localhost";
     private boolean debugging = false;
@@ -1112,8 +1117,19 @@ public class ApiClient {
         Request request =
             buildRequest(baseUrl, path, method, queryParams, collectionQueryParams, body, headerParams, cookieParams, formParams, authNames,
                 callback);
+        LOG.info("Upload request for Horreum: " + "\n" + request.toString() + "\n Request body: " + bodyToString(request.body()));
 
         return httpClient.newCall(request);
+    }
+
+    private static String bodyToString(RequestBody body) {
+        if (body == null) return null;
+        try (Buffer buffer = new Buffer()) {
+            body.writeTo(buffer);
+            return buffer.readUtf8();
+        } catch (IOException e) {
+            return "Failed to convert request body to string: " + e.getMessage();
+        }
     }
 
     /**
