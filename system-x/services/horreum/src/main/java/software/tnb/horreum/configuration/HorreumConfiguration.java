@@ -11,6 +11,7 @@ public class HorreumConfiguration extends Configuration {
     public static final String SCHEMA = "horreum.schema";
     public static final String TEST_OWNER = "horreum.testowner";
     public static final String HTTP_LOG_ENABLED = "horreum.http.log.enabled";
+    public static final String REQUEST_LOG_ENABLED = "horreum.request.log.enabled";
     public static final String FINGERPRINT_NAME = "horreum.fingerprint.name";
     public static final String TESTRUN_DESCRIPTION = "horreum.testrun.description";
 
@@ -37,6 +38,8 @@ public class HorreumConfiguration extends Configuration {
     public static boolean isHttpLogEnabled() {
         return getBoolean(HTTP_LOG_ENABLED, false);
     }
+
+    public static boolean isRequestLogEnabled() {return getBoolean(REQUEST_LOG_ENABLED, false); }
 
     public static Optional<String> getFingerprintName() {
         return Optional.ofNullable(getProperty(FINGERPRINT_NAME));
