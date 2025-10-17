@@ -55,6 +55,11 @@
             <artifactId>okio-jvm</artifactId>
             <version>${okio-jvm-version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>openapi-generator</artifactId>
+            <version>7.10.0</version>
+        </dependency>
     </dependencies>
 
 </project>
